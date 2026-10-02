@@ -1,0 +1,545 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background: #e8e8e8;
+
+    color: #111;
+
+    overflow-x: hidden;
+}
+
+
+/* ================================
+   BACKGROUND ANIMATION
+================================ */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: #d0d0d0;
+
+    z-index: -1;
+
+    animation: floating 8s ease-in-out infinite;
+}
+
+body::before {
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    bottom: -100px;
+    right: -100px;
+
+    width: 400px;
+    height: 400px;
+
+    background: #c2c2c2;
+
+    animation-delay: 2s;
+}
+
+
+@keyframes floating {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, 40px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.container {
+    width: 100%;
+    max-width: 950px;
+
+    animation: pageAppear 0.8s ease forwards;
+}
+
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================================
+   HEADING
+================================ */
+
+h1 {
+    text-align: center;
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+}
+
+
+.subtitle {
+    text-align: center;
+
+    color: #666;
+
+    font-size: 16px;
+
+    margin-bottom: 35px;
+}
+
+
+/* ================================
+   CALCULATOR CARD
+================================ */
+
+.calculator {
+    background: #ffffff;
+
+    border: 1px solid #d6d6d6;
+
+    border-radius: 24px;
+
+    padding: 12px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+
+    animation: cardAppear 1s ease;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ================================
+   SECTIONS
+================================ */
+
+.input-section,
+.result-section {
+    padding: 35px;
+
+    border-radius: 18px;
+
+    transition: 0.3s ease;
+}
+
+
+/* Input side */
+
+.input-section {
+    background: #f1f1f1;
+}
+
+
+/* Result side */
+
+.result-section {
+    background: #151515;
+
+    color: white;
+}
+
+
+/* Hover effect */
+
+.input-section:hover {
+    transform: translateY(-3px);
+}
+
+.result-section:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ================================
+   HEADINGS
+================================ */
+
+h2 {
+    font-size: 23px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+form {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* ================================
+   LABEL
+================================ */
+
+label {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #444;
+}
+
+
+/* ================================
+   INPUT + SELECT
+================================ */
+
+input,
+select {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* Input focus animation */
+
+input:focus,
+select:focus {
+
+    border-color: #111;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 0, 0, 0.08);
+
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+
+button {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 15px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* Button shine animation */
+
+button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    transform: skewX(-20deg);
+
+    transition: 0.5s;
+}
+
+
+button:hover::before {
+
+    left: 130%;
+}
+
+
+/* ================================
+   PRICE ROWS
+================================ */
+
+.price-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #333;
+
+    font-size: 15px;
+}
+
+
+.price-row span:last-child {
+
+    font-weight: 600;
+}
+
+
+/* ================================
+   HR
+================================ */
+
+hr {
+
+    border: none;
+
+    border-top: 1px solid #444;
+
+    margin: 20px 0;
+}
+
+
+/* ================================
+   TOTAL
+================================ */
+
+.total-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    padding-top: 5px;
+}
+
+
+/* Total amount */
+
+#total {
+
+    font-size: 26px;
+
+    animation: totalGlow 2s ease-in-out infinite;
+}
+
+
+@keyframes totalGlow {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .calculator {
+
+        grid-template-columns: 1fr;
+
+        padding: 8px;
+    }
+
+    .input-section,
+    .result-section {
+
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .total-row {
+
+        font-size: 20px;
+    }
+
+    #total {
+
+        font-size: 23px;
+    }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .calculator {
+        border-radius: 18px;
+    }
+
+    .input-section,
+    .result-section {
+        padding: 20px;
+    }
+
+    .price-row {
+        font-size: 14px;
+    }
+}
